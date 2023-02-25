@@ -1,0 +1,39 @@
+<script>
+    function getComputerChoice() {
+        let computerChoice = Math.floor(Math.random() * 3);
+        if (computerChoice == 0) {
+            return "Rock";
+        } else if (computerChoice == 1) {
+            return "Paper";
+        } else if (computerChoice == 2) {
+            return "Scissors";
+        } else {
+            return "Error";
+        }
+        }
+    console.log(getComputerChoice());
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == "Rock" && computerSelection == "Rock") {
+            return "Draw! Rock and rock."
+        } else if (playerSelection == "Rock" && computerSelection == "Paper") {
+            return "You win! Rock beats paper."
+        } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+            return "You lose! Scissors beat rock."       
+        } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            return "You lose! Rock beats paper."
+        } else if (playerSelection == "Paper" && computerSelection == "Paper") {
+            return "Draw! Paper and paper."
+        } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+            return "You win! Paper beats scissors."
+        } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+            return "You win! Scissors beats rock."
+        } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+            return "You lose! Paper beats scissors."
+        } else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+            return "Draw! Scissors and scissors."
+        } else { 
+            return "Error"
+        }
+    }
+</script>
