@@ -1,5 +1,18 @@
+ // Sets everyone's score to 0
+ 
     let computerScore = 0;
     let playerScore = 0;
+
+// Resets scores
+
+function startAgain() {
+    computerScore = 0;
+    playerScore = 0;
+    const container = document.querySelector('#results');
+    container.textContent = '';
+}
+
+// Function to get the computer's random selection for the round
 
     function getComputerChoice() {
         let computerChoice = Math.floor(Math.random() * 3);
@@ -14,59 +27,139 @@
         }
         }
 
+// Play an individual round
+
     function playRound(playerSelection, computerSelection) {
-        if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! rock and rock."
-        } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
-            addOneToScore("player");
-            return "You win! rock beats paper."
-        } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
-            addOneToScore("computer");
-            return "You lose! scissors beat rock."       
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
-            addOneToScore("computer");
-            return "You lose! rock beats paper."
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! paper and paper."
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
-            addOneToScore("player");
-            return "You win! paper beats scissors."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
-            addOneToScore("player");
-            return "You win! scissors beats rock."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
-            addOneToScore("computer");
-            return "You lose! paper beats scissors."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! scissors and scissors."
-        } else { 
-            return "Error"
+        if (computerScore < 5 && playerScore < 5) {
+            if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
+                addOneToScore("player");
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "It's a draw on this round! rock and rock. Score so far: Player - " 
+                                        + playerScore + ", Computer - " 
+                                        + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
+                addOneToScore("player");
+                const content = document.createElement('p');
+                content.textContent = "You win this round! rock beats paper. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "You lose this round! scissors beat rock. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "You lose this round! rock beats paper. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
+                addOneToScore("player");
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "It's a draw on this round! paper and paper. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
+                addOneToScore("player");
+                const content = document.createElement('p');
+                content.textContent = "You win this round! paper beats scissors. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
+                addOneToScore("player");
+                const content = document.createElement('p');
+                content.textContent = "You win this round! scissors beats rock. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "You lose this round! paper beats scissors. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
+                addOneToScore("player");
+                addOneToScore("computer");
+                const content = document.createElement('p');
+                content.textContent = "This round's a draw! scissors and scissors. Score so far: Player - " 
+                + playerScore + ", Computer - " 
+                + computerScore;
+                container.appendChild(content);
+                endGame();
+            } else { 
+                const content = document.createElement('p');
+                content.textContent = "Error.";
+                container.appendChild(content);
+            }
         }
+
     }
 
-    function game() {
-        for (let i = 0; i < 5; i++) {
-            console.log("This is round " + (i + 1));
-            const playerSelection = prompt("Rock, paper or scissors?");
-            const computerSelection = getComputerChoice();
-            console.log(playRound(playerSelection, computerSelection));
-            console.log("Score for this round: Player - " + playerScore + ", Computer - " + computerScore);
-        }
-        console.log("You've had five rounds, that's game over.");
+// The overall game which plays five rounds and declares the winner
+
+const container = document.querySelector('#results');
+
+const rockElement = document.getElementById("rock-image");
+rockElement.addEventListener("click", function() {
+    playRound("rock",getComputerChoice())
+});
+
+const paperElement = document.getElementById("paper-image");
+paperElement.addEventListener("click", function() {
+    playRound("paper",getComputerChoice())
+});
+
+const scissorsElement = document.getElementById("scissors-image");
+scissorsElement.addEventListener("click", function() {
+    playRound("scissors",getComputerChoice())
+});
+
+
+
+// Checks if anyone has got to a score of 5 yet
+
+function endGame() {
+    if (computerScore >= 5 || playerScore >= 5) {
         if (playerScore > computerScore) {
-            console.log("You win!");
+            const container = document.querySelector('#results');
+            const content = document.createElement('p');
+            content.textContent = "Game over. You win!";
+            container.appendChild(content);
         } else if (playerScore == computerScore) {
-            console.log("Draw!");
+            const container = document.querySelector('#results');
+            const content = document.createElement('p');
+            content.textContent = "Game over. Draw!";
+            container.appendChild(content);
         } else if (playerScore < computerScore) {
-            console.log("You lose!");
+            const container = document.querySelector('#results');
+            const content = document.createElement('p');
+            content.textContent = "Game over. You lose!";
+            container.appendChild(content);
         }
     }
+}
+
+// Adds one to the computer or the player score, depending on who won
 
     function addOneToScore(whoIsPlaying) {
         if (whoIsPlaying == "computer") {
@@ -75,8 +168,3 @@
             playerScore++;
         }
     }
-
-
-    for (let i = 0; i <= 10; i += 2) {
-	alert(i);
-}

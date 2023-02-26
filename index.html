@@ -1,85 +1,24 @@
-<script>
-    let computerScore = 0;
-    let playerScore = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, paper, scissors</title>
+    <script defer src="scripts.js"></script>
+    <style>
+        img {height:200px;}
+    </style>
+</head>
+<body>
+    <h1>Rock, paper, scissors</h1>
+    <p>Click the rock, paper or scissors to play against the computer. Whoever gets to a score of 5 first wins.</p>
+    <img id="rock-image" src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-stone-rock-stone-small-rockery-png-image_3813140.jpg" />
+    <img id="paper-image" src="https://png.pngtree.com/png-clipart/20220628/original/pngtree-torn-notebook-paper-white-coil-png-image_8243304.png" />
+    <img id="scissors-image" src="https://png.pngtree.com/png-clipart/20190920/original/pngtree-an-office-scissors-illustration-png-image_4626875.jpg" />
+    
+    <div id="results"></div>
 
-    function getComputerChoice() {
-        let computerChoice = Math.floor(Math.random() * 3);
-        if (computerChoice == 0) {
-            return "rock";
-        } else if (computerChoice == 1) {
-            return "paper";
-        } else if (computerChoice == 2) {
-            return "scissors";
-        } else {
-            return "error";
-        }
-        }
-
-    function playRound(playerSelection, computerSelection) {
-        if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! rock and rock."
-        } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
-            addOneToScore("player");
-            return "You win! rock beats paper."
-        } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
-            addOneToScore("computer");
-            return "You lose! scissors beat rock."       
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
-            addOneToScore("computer");
-            return "You lose! rock beats paper."
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! paper and paper."
-        } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
-            addOneToScore("player");
-            return "You win! paper beats scissors."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
-            addOneToScore("player");
-            return "You win! scissors beats rock."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
-            addOneToScore("computer");
-            return "You lose! paper beats scissors."
-        } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
-            addOneToScore("player");
-            addOneToScore("computer");
-            return "Draw! scissors and scissors."
-        } else { 
-            return "Error"
-        }
-    }
-
-    function game() {
-        for (let i = 0; i < 5; i++) {
-            console.log("This is round " + (i + 1));
-            const playerSelection = prompt("Rock, paper or scissors?");
-            const computerSelection = getComputerChoice();
-            console.log(playRound(playerSelection, computerSelection));
-            console.log("Score for this round: Player - " + playerScore + ", Computer - " + computerScore);
-        }
-        console.log("You've had five rounds, that's game over.");
-        if (playerScore > computerScore) {
-            console.log("You win!");
-        } else if (playerScore == computerScore) {
-            console.log("Draw!");
-        } else if (playerScore < computerScore) {
-            console.log("You lose!");
-        }
-    }
-
-    function addOneToScore(whoIsPlaying) {
-        if (whoIsPlaying == "computer") {
-            computerScore++;
-        } else if (whoIsPlaying == "player") {
-            playerScore++;
-        }
-    }
-
-
-    for (let i = 0; i <= 10; i += 2) {
-	alert(i);
-}
-
-</script>
+    <button onClick="startAgain()">Start again</button>
+</body>
+</html>
