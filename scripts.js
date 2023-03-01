@@ -3,6 +3,8 @@
     let computerScore = 0;
     let playerScore = 0;
 
+// Testing an update
+
 // Resets scores
 
 function startAgain() {
