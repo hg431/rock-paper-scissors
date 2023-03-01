@@ -37,31 +37,31 @@ function startAgain() {
                 addOneToScore("player");
                 addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "It's a draw on this round! rock and rock. Score so far: Player - " 
+                content.textContent = "It's a draw on this round! Rock and rock. You - " 
                                         + playerScore + ", Computer - " 
                                         + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
-                addOneToScore("player");
+                addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "You win this round! rock beats paper. Score so far: Player - " 
+                content.textContent = "You lose this round! Paper beats rock. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
-                addOneToScore("computer");
+                addOneToScore("player");
                 const content = document.createElement('p');
-                content.textContent = "You lose this round! scissors beat rock. Score so far: Player - " 
+                content.textContent = "You win this round! Rock beats scissors. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
-                addOneToScore("computer");
+                addOneToScore("player");
                 const content = document.createElement('p');
-                content.textContent = "You lose this round! rock beats paper. Score so far: Player - " 
+                content.textContent = "You win this round! Paper beats rock. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
@@ -70,31 +70,31 @@ function startAgain() {
                 addOneToScore("player");
                 addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "It's a draw on this round! paper and paper. Score so far: Player - " 
+                content.textContent = "It's a draw on this round! paper and paper. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
-                addOneToScore("player");
+                addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "You win this round! paper beats scissors. Score so far: Player - " 
+                content.textContent = "You lose this round! Scissors beats paper. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
-                addOneToScore("player");
+                addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "You win this round! scissors beats rock. Score so far: Player - " 
+                content.textContent = "You lose this round! Rock beats scissors. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
                 endGame();
             } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
-                addOneToScore("computer");
+                addOneToScore("player");
                 const content = document.createElement('p');
-                content.textContent = "You lose this round! paper beats scissors. Score so far: Player - " 
+                content.textContent = "You win this round! Scissors beats paper. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
@@ -103,7 +103,7 @@ function startAgain() {
                 addOneToScore("player");
                 addOneToScore("computer");
                 const content = document.createElement('p');
-                content.textContent = "This round's a draw! scissors and scissors. Score so far: Player - " 
+                content.textContent = "This round's a draw! scissors and scissors. You - " 
                 + playerScore + ", Computer - " 
                 + computerScore;
                 container.appendChild(content);
